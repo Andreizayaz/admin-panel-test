@@ -5,5 +5,6 @@ export type userType = {
     username: string;
     role: string;
     subscriptionStatus: string;
+    tokens: number;
   };
 };

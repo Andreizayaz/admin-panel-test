@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { AuthUser, Company } from "components/shared";
+import { AuthUser, Company } from "src/components/shared";
 
 import {
   AUTH_DESC,

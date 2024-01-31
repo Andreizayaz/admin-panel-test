@@ -3,11 +3,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { userType } from "./types";
 
 type initialStateType = {
-  users: userType[] | null;
+  users: userType[] | [];
 };
 
 const initialState: initialStateType = {
-  users: null,
+  users: [],
 };
 
 export const usersSlice = createSlice({

@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { ContentArea, Header } from "components/widgets";
+import { ContentArea, Header } from "src/components/widgets";
 
 export const AdminPage: FC = (): ReactElement => (
   <>
