@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+
+import { AdminPage } from "components/pages";
 
 import "./scss/main.scss";
 
@@ -9,6 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AdminPage />
   </React.StrictMode>
 );

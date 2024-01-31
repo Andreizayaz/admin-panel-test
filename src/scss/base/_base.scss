@@ -8,6 +8,9 @@ body {
   padding: 34px 25px;
   min-height: 100vh;
   font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .root {
@@ -18,4 +21,25 @@ body {
 
 main {
   flex: 1 1 auto;
+}
+
+.flex-j-between-a-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-desc {
+  color: 616D8D;
 }
