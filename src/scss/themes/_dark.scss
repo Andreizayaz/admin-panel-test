@@ -18,3 +18,18 @@ body {
     border-bottom: 1px solid #222b44;
   }
 }
+
+.table {
+  .thead {
+    th {
+      color: #9ca3af;
+      background-color: #0e0c15;
+    }
+  }
+
+  .tbody {
+    tr {
+      border-bottom: 1px solid #222b44;
+    }
+  }
+}
