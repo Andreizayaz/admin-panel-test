@@ -1,0 +1,21 @@
+html,
+body,
+.root {
+  height: 100%;
+}
+
+body {
+  padding: 34px 25px;
+  min-height: 100vh;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  column-gap: 34px;
+}
+
+main {
+  flex: 1 1 auto;
+}
