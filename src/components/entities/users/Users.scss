@@ -2,6 +2,10 @@
   row-gap: 24px;
   padding: 29px 34px 45px;
 
+  .table-heading {
+    padding: 0;
+  }
+
   .sort {
     display: flex;
     align-items: center;

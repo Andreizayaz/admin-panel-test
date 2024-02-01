@@ -15,6 +15,11 @@
     align-items: center;
     justify-content: center;
     column-gap: 4px;
+
+    @media (max-width: 834px) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   .pagination {

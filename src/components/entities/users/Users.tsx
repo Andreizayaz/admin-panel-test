@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { Input, Pagination, Table } from "src/components/shared";
+import { Heading, Input, Pagination, Table } from "src/components/shared";
 
 import "./Users.scss";
 import {
@@ -8,6 +8,7 @@ import {
   PAGE_SIZE,
   PLACEHOLDER,
   SIBLING_COUNT,
+  TABLE_HEADING,
 } from "./helpers/consts";
 import { useSearch, useSort, useUserList } from "./hooks";
 import { usePagination } from "src/components/shared/pagination";
@@ -30,6 +31,7 @@ export const Users: FC = (): ReactElement => {
 
   return (
     <div className="users flex-column">
+      <Heading heading={TABLE_HEADING} classes="table-heading" />
       <Input
         placeholder={PLACEHOLDER}
         classes="search-input"

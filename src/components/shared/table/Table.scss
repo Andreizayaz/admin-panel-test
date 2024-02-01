@@ -9,6 +9,12 @@
         &:last-child {
           border-radius: 0 8px 8px 0;
         }
+
+        @media (max-width: 375px) {
+          &:nth-child(n + 3) {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -23,6 +29,16 @@
     padding: 14px 20px;
     text-align: center;
     overflow-wrap: anywhere;
+  }
+
+  td {
+    padding: 22px 0;
+
+    @media (max-width: 375px) {
+      &:nth-child(n + 3) {
+        display: none;
+      }
+    }
   }
 
   .btn-actions {
