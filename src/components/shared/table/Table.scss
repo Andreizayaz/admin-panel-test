@@ -24,4 +24,17 @@
     text-align: center;
     overflow-wrap: anywhere;
   }
+
+  .btn-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  .btn-icon {
+    display: block;
+    height: 18px;
+    width: 18px;
+  }
 }

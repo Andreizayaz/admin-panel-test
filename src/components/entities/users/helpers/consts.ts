@@ -9,6 +9,8 @@ const SUBSCRIPTION = "Подписка";
 export const TOKENS = "Токены";
 export const ACTIONS = "Действия";
 
+export const TOKENS_SORT_KEY = "tokens";
+
 export const headings: headingType[] = [
   {
     heading: EMAIL,

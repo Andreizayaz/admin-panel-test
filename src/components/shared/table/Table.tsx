@@ -50,11 +50,11 @@ export const Table: FC<TablePropsTypes> = ({
           {isActions && (
             <td className="btn-actions">
               <button
-                className={`btn-icon ${editClassName ?? ""}`}
+                className={`btn-icon bg-image ${editClassName ?? ""}`}
                 onClick={editHandler ?? undefined}
               ></button>
               <button
-                className={`btn-icon ${deleteClassName ?? ""}`}
+                className={`btn-icon bg-image ${deleteClassName ?? ""}`}
                 onClick={deleteHandler ?? undefined}
               ></button>
             </td>

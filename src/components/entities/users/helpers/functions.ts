@@ -1,5 +1,5 @@
 import axios from "src/http";
-import { userType } from "../users/store/types";
+import { userType } from "../store/types";
 export const getUsers = async (url: string): Promise<userType[]> => {
   const response = await axios.get(url);
   const users: Array<any> = await response.data.data;
