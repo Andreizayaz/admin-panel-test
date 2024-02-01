@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { Input, Table } from "src/components/shared";
+import { Input, Pagination, Table } from "src/components/shared";
 
 import "./Users.scss";
 import { NO_DATA_MSG, PLACEHOLDER } from "./helpers/consts";
@@ -10,6 +10,8 @@ export const Users: FC = (): ReactElement => {
   const { modUsers } = useUserList();
   const { currHeadings } = useSort();
   const { handleInput } = useSearch();
+
+  const pagination = ["1", "2", "3", "4", "...", "104"];
 
   return (
     <div className="users flex-column">
@@ -26,6 +28,12 @@ export const Users: FC = (): ReactElement => {
         editClassName="edit-icon"
         deleteClassName="delete-icon"
         noDataMsg={NO_DATA_MSG}
+      />
+      <Pagination
+        currPage={1}
+        pagination={pagination}
+        handleNav={() => {}}
+        paginationHandler={() => {}}
       />
     </div>
   );
