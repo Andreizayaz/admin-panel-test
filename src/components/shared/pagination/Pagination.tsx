@@ -54,7 +54,9 @@ export const Pagination: FC<PaginationPropsTypes> = ({
                 key={index}
                 disabled={item === DOTS}
                 className={`${
-                  currentPage === index ? "item item_active" : "item"
+                  currentPage === (item as number) - 1
+                    ? "item item_active"
+                    : "item"
                 }`}
               >
                 {item}

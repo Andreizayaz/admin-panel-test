@@ -23,11 +23,10 @@ export const Users: FC = (): ReactElement => {
     end,
     totalPageCount,
     handlePagination,
+    handleNav,
   } = usePagination(PAGE_SIZE, modUsers.length, SIBLING_COUNT);
 
-  console.log(start);
-  console.log(end);
-  console.log(paginationRage);
+  console.log(modUsers);
 
   return (
     <div className="users flex-column">
@@ -49,7 +48,9 @@ export const Users: FC = (): ReactElement => {
         currentPage={currentPage}
         paginationRange={paginationRage}
         totalPageCount={totalPageCount}
-        handleNav={() => {}}
+        handleNav={(e) => {
+          handleNav(e);
+        }}
         handlePagination={(e) => handlePagination(e)}
       />
     </div>

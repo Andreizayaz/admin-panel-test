@@ -10,8 +10,11 @@ export const usePagination = (
   const [currentPage, setCurrentPage] = useState(0);
   const [start, setStart] = useState(currentPage);
   const [end, setEnd] = useState(pageSize);
-  const [totalPageCount] = useState(Math.ceil(totalCount / pageSize));
+  const [totalPageCount, setTotalPageCount] = useState(
+    Math.ceil(totalCount / pageSize)
+  );
 
+  console.log(totalCount);
   const handlePagination = (
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
@@ -20,9 +23,25 @@ export const usePagination = (
     }
   };
 
-  const handleNav = (
-    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ) => {};
+  const handleNav = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    const isPrev =
+      (e.target as HTMLButtonElement).id === "prev" && currentPage > 0;
+    const isNext =
+      (e.target as HTMLButtonElement).id === "next" &&
+      currentPage < totalCount - 1;
+    if (isPrev) {
+      setCurrentPage((prev) => prev - 1);
+    }
+
+    if (isNext) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    setTotalPageCount(Math.ceil(totalCount / pageSize));
+    setCurrentPage(0);
+  }, [totalCount, pageSize]);
 
   useEffect(() => {
     setStart(currentPage * pageSize);
@@ -70,7 +89,7 @@ export const usePagination = (
       let middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
-  }, [totalCount, pageSize, siblingCount, currentPage]);
+  }, [siblingCount, currentPage, totalPageCount]);
 
   return {
     start,
@@ -79,5 +98,6 @@ export const usePagination = (
     paginationRage,
     totalPageCount,
     handlePagination,
+    handleNav,
   };
 };
