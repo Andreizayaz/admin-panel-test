@@ -3,15 +3,31 @@ import { FC, ReactElement } from "react";
 import { Input, Pagination, Table } from "src/components/shared";
 
 import "./Users.scss";
-import { NO_DATA_MSG, PLACEHOLDER } from "./helpers/consts";
+import {
+  NO_DATA_MSG,
+  PAGE_SIZE,
+  PLACEHOLDER,
+  SIBLING_COUNT,
+} from "./helpers/consts";
 import { useSearch, useSort, useUserList } from "./hooks";
+import { usePagination } from "src/components/shared/pagination";
 
 export const Users: FC = (): ReactElement => {
   const { modUsers } = useUserList();
   const { currHeadings } = useSort();
   const { handleInput } = useSearch();
+  const {
+    paginationRage,
+    currentPage,
+    start,
+    end,
+    totalPageCount,
+    handlePagination,
+  } = usePagination(PAGE_SIZE, modUsers.length, SIBLING_COUNT);
 
-  const pagination = ["1", "2", "3", "4", "...", "104"];
+  console.log(start);
+  console.log(end);
+  console.log(paginationRage);
 
   return (
     <div className="users flex-column">
@@ -22,7 +38,7 @@ export const Users: FC = (): ReactElement => {
       />
       <Table
         headings={currHeadings}
-        data={modUsers.slice(0, 10)}
+        data={modUsers.slice(start, end)}
         keyForIterate="userData"
         isActions={true}
         editClassName="edit-icon"
@@ -30,10 +46,11 @@ export const Users: FC = (): ReactElement => {
         noDataMsg={NO_DATA_MSG}
       />
       <Pagination
-        currPage={1}
-        pagination={pagination}
+        currentPage={currentPage}
+        paginationRange={paginationRage}
+        totalPageCount={totalPageCount}
         handleNav={() => {}}
-        paginationHandler={() => {}}
+        handlePagination={(e) => handlePagination(e)}
       />
     </div>
   );

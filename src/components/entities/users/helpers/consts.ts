@@ -39,3 +39,6 @@ export const TOKENS_FIELD = "tokens";
 export const TOKENS_UNIT = "TKN";
 
 export const NO_DATA_MSG = "no results";
+
+export const PAGE_SIZE = 10;
+export const SIBLING_COUNT = 1;
