@@ -32,3 +32,10 @@ export const headings: headingType[] = [
     heading: ACTIONS,
   },
 ];
+
+export const PLACEHOLDER = "Поиск";
+
+export const TOKENS_FIELD = "tokens";
+export const TOKENS_UNIT = "TKN";
+
+export const NO_DATA_MSG = "no results";

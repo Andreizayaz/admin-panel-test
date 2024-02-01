@@ -8,6 +8,7 @@ type TablePropsTypes = {
   headings: headingType[];
   data: Array<any>;
   keyForIterate: string;
+  noDataMsg?: string;
   isActions?: boolean;
   editClassName?: string;
   deleteClassName?: string;
@@ -22,6 +23,7 @@ export const Table: FC<TablePropsTypes> = ({
   keyForIterate,
   editClassName,
   deleteClassName,
+  noDataMsg,
   editHandler,
   deleteHandler,
 }): ReactElement => (
@@ -39,28 +41,32 @@ export const Table: FC<TablePropsTypes> = ({
         ))}
       </tr>
     </thead>
-    <tbody className="tbody">
-      {data?.map((item) => (
-        <tr key={item?.id} onClick={item?.handleClick && undefined}>
-          {Object.values(item[keyForIterate])?.map((cell: any) => (
-            <td className={`${cell?.classes}`} key={cell?.content}>
-              {cell?.content}
-            </td>
-          ))}
-          {isActions && (
-            <td className="btn-actions">
-              <button
-                className={`btn-icon bg-image ${editClassName ?? ""}`}
-                onClick={editHandler ?? undefined}
-              ></button>
-              <button
-                className={`btn-icon bg-image ${deleteClassName ?? ""}`}
-                onClick={deleteHandler ?? undefined}
-              ></button>
-            </td>
-          )}
-        </tr>
-      ))}
-    </tbody>
+    {!data.length ? (
+      <p className="no-data">{noDataMsg}</p>
+    ) : (
+      <tbody className="tbody">
+        {data?.map((item) => (
+          <tr key={item?.id} onClick={item?.handleClick && undefined}>
+            {Object.values(item[keyForIterate])?.map((cell: any) => (
+              <td className={`${cell?.classes}`} key={cell?.content}>
+                {cell?.content}
+              </td>
+            ))}
+            {isActions && (
+              <td className="btn-actions">
+                <button
+                  className={`btn-icon bg-image ${editClassName ?? ""}`}
+                  onClick={editHandler ?? undefined}
+                ></button>
+                <button
+                  className={`btn-icon bg-image ${deleteClassName ?? ""}`}
+                  onClick={deleteHandler ?? undefined}
+                ></button>
+              </td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    )}
   </table>
 );

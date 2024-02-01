@@ -17,8 +17,12 @@ button {
   outline: none;
 }
 
-a {
+a,
+input {
   font: inherit;
+}
+
+a {
   text-decoration: none;
 }
 

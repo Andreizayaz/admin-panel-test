@@ -34,4 +34,12 @@
   .delete-icon {
     background-image: url("./icons/delete.icon.svg");
   }
+
+  .search-input {
+    padding-left: 42px;
+    background-image: url("./icons/search.icon.svg");
+    background-position: 16px 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+  }
 }

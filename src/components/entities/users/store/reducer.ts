@@ -4,10 +4,12 @@ import { sortType, userType } from "./types";
 
 type initialStateType = {
   users: userType[] | [];
+  searchUsers: userType[] | [];
 };
 
 const initialState: initialStateType = {
   users: [],
+  searchUsers: [],
 };
 
 export const usersSlice = createSlice({
@@ -16,12 +18,13 @@ export const usersSlice = createSlice({
   reducers: {
     setUsers: (state, action: PayloadAction<userType[]>) => {
       state.users = action.payload;
+      state.searchUsers = state.users;
     },
     sortUsers: (
       state,
       { payload: { sortKey, isDescSort } }: PayloadAction<sortType>
     ) => {
-      state.users.sort((user1, user2) => {
+      state.searchUsers.sort((user1, user2) => {
         const isNumber =
           typeof user1.userData[sortKey] === "number" &&
           typeof user2.userData[sortKey] === "number";
@@ -37,9 +40,16 @@ export const usersSlice = createSlice({
           : Number(user1.userData[sortKey] < user2.userData[sortKey]);
       });
     },
+    findUsers: (state, action: PayloadAction<string>) => {
+      state.searchUsers = state.users.filter(({ userData }) =>
+        Object.values(userData)
+          .map((item) => item.toString().toLowerCase())
+          .some((item) => item.includes(action.payload.toLowerCase()))
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUsers, sortUsers } = usersSlice.actions;
+export const { setUsers, sortUsers, findUsers } = usersSlice.actions;
 export const usersReducer = usersSlice.reducer;
