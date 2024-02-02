@@ -12,6 +12,7 @@ import {
 } from "./helpers/consts";
 import { useSearch, useSort, useUserList } from "./hooks";
 import { usePagination } from "src/components/shared/pagination";
+import { Transactions } from "../transactions";
 
 export const Users: FC = (): ReactElement => {
   const { modUsers } = useUserList();
@@ -26,8 +27,6 @@ export const Users: FC = (): ReactElement => {
     handlePagination,
     handleNav,
   } = usePagination(PAGE_SIZE, modUsers.length, SIBLING_COUNT);
-
-  console.log(modUsers);
 
   return (
     <div className="users flex-column">
@@ -55,6 +54,7 @@ export const Users: FC = (): ReactElement => {
         }}
         handlePagination={(e) => handlePagination(e)}
       />
+      <Transactions />
     </div>
   );
 };

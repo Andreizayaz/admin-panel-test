@@ -25,7 +25,6 @@ export const Pagination: FC<PaginationPropsTypes> = ({
       <div
         className="navigation"
         onClick={(e) => {
-          console.log("clicked nav");
           handleNav(e);
         }}
       >

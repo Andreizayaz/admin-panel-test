@@ -1,12 +1,10 @@
 html,
 body,
 .root {
-  height: 100%;
+  min-height: 100vh;
 }
 
 body {
-  padding: 34px 25px;
-  min-height: 100vh;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -14,26 +12,25 @@ body {
 
   @media (max-width: 834px) {
     font-size: 12px;
-    padding: 34px 40px;
     line-height: 16px;
-  }
-
-  @media (max-width: 375px) {
-    padding: 14px 0;
   }
 }
 
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 34px;
+  padding: 34px 25px;
 
   @media (max-width: 834px) {
     row-gap: 32px;
+    padding: 34px 40px;
   }
 
   @media (max-width: 375px) {
     row-gap: 27px;
+    padding: 14px 0;
   }
 }
 

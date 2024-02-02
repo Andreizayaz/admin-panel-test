@@ -14,7 +14,6 @@ export const usePagination = (
     Math.ceil(totalCount / pageSize)
   );
 
-  console.log(totalCount);
   const handlePagination = (
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
