@@ -3,17 +3,17 @@ import { useDispatch } from "react-redux";
 import { setTransactions } from "../../transactions/store";
 
 export const useDrawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isClose, setisClose] = useState(true);
 
   const dispatch = useDispatch();
 
-  const handleOpen = (b: boolean) => setIsOpen(b);
+  const handleClose = (b: boolean) => setisClose(b);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (isClose) {
       dispatch(setTransactions(null));
     }
-  }, [isOpen]);
+  }, [isClose]);
 
-  return { isOpen, handleOpen };
+  return { isClose, handleClose };
 };
