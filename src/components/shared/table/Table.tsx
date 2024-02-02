@@ -12,7 +12,7 @@ type TablePropsTypes = {
   isActions?: boolean;
   editClassName?: string;
   deleteClassName?: string;
-  classes?: string;
+  tableClasses?: string;
   editHandler?: () => void;
   deleteHandler?: () => void;
   clickTableRow?: (
@@ -28,12 +28,12 @@ export const Table: FC<TablePropsTypes> = ({
   editClassName,
   deleteClassName,
   noDataMsg,
-  classes,
+  tableClasses,
   editHandler,
   deleteHandler,
   clickTableRow,
 }): ReactElement => (
-  <table className={`table ${classes ?? ""}`}>
+  <table className={`table ${tableClasses ?? ""}`}>
     <thead className="thead">
       <tr>
         {headings.map(({ heading, classes, clickHandler }) => (

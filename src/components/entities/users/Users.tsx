@@ -74,7 +74,7 @@ export const Users: FC = (): ReactElement => {
         isActions={true}
         editClassName="edit-icon"
         deleteClassName="delete-icon"
-        classes="action-table"
+        tableClasses="action-table"
         noDataMsg={NO_DATA_MSG}
         clickTableRow={clickTable}
       />
@@ -89,11 +89,11 @@ export const Users: FC = (): ReactElement => {
       />
       {isOpen && (
         <div className="overlay" onClick={() => handleOpen(false)}>
-          <Drawer
-            openClasses={true ? "open-drawer" : ""}
-            closeHandler={() => handleOpen(false)}
-          >
-            <Transactions email={email} />
+          <Drawer openClasses={true ? "open-drawer" : ""}>
+            <Transactions
+              email={email}
+              closeHandler={() => handleOpen(false)}
+            />
           </Drawer>
         </div>
       )}
