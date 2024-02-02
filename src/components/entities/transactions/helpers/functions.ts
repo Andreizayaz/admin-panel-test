@@ -41,20 +41,39 @@ const getDate = (date: string) => {
   return `${locDate}, ${locTime}`;
 };
 
+const getClassesForAmount = (type:string)=>{
+  if (type === WRITE_OFF) {
+    return 'write-off'
+  }
+
+  if (type === REPLENISH) {
+    return 'replenish';
+  }
+
+  return '';
+}
+
 export const modifyTransactionList = (transactions: transactionType[]) => {
   return transactions
     .filter(({ transactionData: { status } }) => status === STATUS_SUCCEDED)
     .map(({ id, transactionData }) => {
       return {
         id,
-        transactionData:{
-
-          type:
-            transactionTr[transactionData.type as keyof typeof transactionTr] ??
-            "",
-          amount: getAmount(transactionData),
-          date: getDate(transactionData.created_at),
-        }
+        transactionData: [
+          {
+            content:
+              transactionTr[
+                transactionData.type as keyof typeof transactionTr
+              ] ?? "",
+          },
+          {
+            content: getAmount(transactionData),
+            classes: getClassesForAmount(transactionData.type),
+          },
+          {
+            content: getDate(transactionData.created_at),
+          },
+        ] 
       };
     });
 };

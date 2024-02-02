@@ -15,5 +15,5 @@ export const useUserList = () => {
     getUsers(USERS_URL).then((data) => dispatch(setUsers(data as userType[])));
   }, []);
 
-  return { modUsers };
+  return { users, modUsers };
 };

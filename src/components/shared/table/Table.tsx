@@ -47,7 +47,7 @@ export const Table: FC<TablePropsTypes> = ({
         ))}
       </tr>
     </thead>
-    {!data.length ? (
+    {!data?.length ? (
       <p className="no-data">{noDataMsg}</p>
     ) : (
       <tbody
