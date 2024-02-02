@@ -1,0 +1,61 @@
+html,
+body,
+.root {
+  height: 100vh;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+
+  @media (max-width: 834px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 34px;
+  padding: 34px 25px;
+  overflow-x: hidden;
+
+  @media (max-width: 834px) {
+    row-gap: 32px;
+    padding: 34px 40px;
+  }
+
+  @media (max-width: 375px) {
+    row-gap: 27px;
+    padding: 14px 0;
+  }
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.flex-j-between-a-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-desc {
+  color: #616d8d;
+}

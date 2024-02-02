@@ -1,0 +1,48 @@
+body {
+  color: #ffffff;
+  background-color: #0e0c15;
+}
+
+.header {
+  background-color: #121825;
+}
+
+.company-icon {
+  background-color: #222b44;
+}
+
+.content-area {
+  background-color: #121825;
+
+  .border-bottom {
+    border-bottom: 1px solid #222b44;
+  }
+}
+
+.table {
+  .thead {
+    th {
+      color: #9ca3af;
+      background-color: #0e0c15;
+    }
+  }
+
+  .tbody {
+    tr {
+      border-bottom: 1px solid #222b44;
+    }
+  }
+}
+
+.input {
+  color: #616d8d;
+  border: 1px solid #313e62;
+}
+
+.drawer{
+  background-color: #121825;
+}
+
+.transactions{
+  background-color: #121825;
+}

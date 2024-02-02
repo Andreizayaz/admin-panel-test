@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+button,
+input {
+  transition: all 0.4s;
+}
+
+input,
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+a,
+button,
+input {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}

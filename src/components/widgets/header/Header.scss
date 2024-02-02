@@ -1,0 +1,15 @@
+.header {
+  padding: 16px 24px;
+  border-radius: 17px;
+
+  .logo-and-company {
+    column-gap: 44px;
+  }
+
+  .logo {
+    padding-right: 26px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29px;
+  }
+}

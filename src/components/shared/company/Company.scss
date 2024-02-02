@@ -1,0 +1,20 @@
+.company {
+  column-gap: 10px;
+
+  .company-icon {
+    height: 24px;
+    width: 24px;
+    border-radius: 4px;
+    background-size: 16px 16px;
+  }
+
+  .company-name {
+    font-size: 16px;
+    line-height: 22px;
+
+    @media (max-width: 834px) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}

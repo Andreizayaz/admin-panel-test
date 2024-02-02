@@ -1,0 +1,11 @@
+.drawer {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  padding: 56px 20px 56px 20px;
+  height: 100%;
+  width: 100%;
+  max-width: 470px;
+  transition: all 0.4s;
+  overflow-y: auto;
+}
