@@ -46,4 +46,14 @@
     background-repeat: no-repeat;
     background-size: 16px 16px;
   }
+
+  .action-table {
+    tr {
+      cursor: pointer;
+    }
+  }
+
+  .open-drawer {
+    right: 0;
+  }
 }

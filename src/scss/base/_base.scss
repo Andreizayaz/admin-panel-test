@@ -22,6 +22,7 @@ body {
   flex-direction: column;
   row-gap: 34px;
   padding: 34px 25px;
+  overflow-x: hidden;
 
   @media (max-width: 834px) {
     row-gap: 32px;

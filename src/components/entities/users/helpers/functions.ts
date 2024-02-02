@@ -1,22 +1,28 @@
 import axios from "src/http";
 import { userType } from "../store/types";
-import { TOKENS_FIELD, TOKENS_UNIT } from "./consts";
+import { TOKENS_FIELD, TOKENS_UNIT, TRANSACTIONS, USER } from "./consts";
 
-export const getUsers = async (url: string): Promise<userType[]> => {
-  const response = await axios.get(url);
-  const users: Array<any> = await response.data.data;
-  return users.map((user) => {
-    return {
-      id: user?.id,
-      userData: {
-        email: user?.email,
-        username: user?.name,
-        role: user?.role,
-        subscriptionStatus: user?.subscription?.plan?.type,
-        tokens: user?.subscription?.tokens,
-      },
-    };
-  });
+export const getUsers = async (
+  url: string
+): Promise<userType[] | undefined> => {
+  try {
+    const response = await axios.get(url);
+    const users: Array<any> = await response.data.data;
+    return users.map((user) => {
+      return {
+        id: user?.id,
+        userData: {
+          email: user?.email,
+          username: user?.name,
+          role: user?.role,
+          subscriptionStatus: user?.subscription?.plan?.type,
+          tokens: user?.subscription?.tokens,
+        },
+      };
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const modifyUserList = (users: userType[]) => {
@@ -33,4 +39,27 @@ export const modifyUserList = (users: userType[]) => {
       }),
     };
   });
+};
+
+export const getTransactions = async (userId: string): Promise<any> => {
+  try {
+    const transactionsUrl = `${USER}/${userId}/${TRANSACTIONS}`;
+    const response = await axios.get(transactionsUrl);
+    const transactions = await response.data;
+    return transactions.map((item: any) => {
+      return {
+        id: item?.id,
+        userId: item?.user_id,
+        transactionData: {
+          amount: item?.amount,
+          status: item?.status,
+          currency: item?.currency,
+          type: item?.type,
+          created_at: item?.created_at,
+        },
+      };
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

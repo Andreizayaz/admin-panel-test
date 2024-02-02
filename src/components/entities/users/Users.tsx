@@ -1,6 +1,6 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, MouseEvent } from "react";
 
-import { Heading, Input, Pagination, Table } from "src/components/shared";
+import { Drawer, Heading, Input, Pagination, Table } from "src/components/shared";
 
 import "./Users.scss";
 import {
@@ -12,9 +12,15 @@ import {
 } from "./helpers/consts";
 import { useSearch, useSort, useUserList } from "./hooks";
 import { usePagination } from "src/components/shared/pagination";
-import { Transactions } from "../transactions";
+import { Transactions, setTransactions } from "../transactions";
+import { getTransactions } from "./helpers/functions";
+import { useDispatch } from "react-redux";
+import { transactionType } from "../transactions/store/types";
+import { useDrawer } from "./hooks/useDrawer";
 
 export const Users: FC = (): ReactElement => {
+  const dispatch = useDispatch();
+  const { handleOpen, isOpen } = useDrawer();
   const { modUsers } = useUserList();
   const { currHeadings } = useSort();
   const { handleInput } = useSearch();
@@ -27,6 +33,18 @@ export const Users: FC = (): ReactElement => {
     handlePagination,
     handleNav,
   } = usePagination(PAGE_SIZE, modUsers.length, SIBLING_COUNT);
+
+  const clickTable = async (
+    e: MouseEvent<HTMLTableSectionElement, globalThis.MouseEvent>
+  ) => {
+    const target = (e.target as HTMLTableRowElement).closest("tr");
+    if (target) {
+      await getTransactions(target.id).then((data) =>
+        dispatch(setTransactions(data as transactionType[] | null))
+      );
+      handleOpen()
+    }
+  };
 
   return (
     <div className="users flex-column">
@@ -43,7 +61,9 @@ export const Users: FC = (): ReactElement => {
         isActions={true}
         editClassName="edit-icon"
         deleteClassName="delete-icon"
+        classes="action-table"
         noDataMsg={NO_DATA_MSG}
+        clickTableRow={clickTable}
       />
       <Pagination
         currentPage={currentPage}
@@ -54,7 +74,9 @@ export const Users: FC = (): ReactElement => {
         }}
         handlePagination={(e) => handlePagination(e)}
       />
-      <Transactions />
+      <Drawer openClasses={true?'open-drawer':''} closeHandler={handleOpen}>
+        <Transactions/>
+      </Drawer>
     </div>
   );
 };

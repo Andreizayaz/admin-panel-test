@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, MouseEvent } from "react";
 
 import { headingType } from "./types";
 
@@ -12,8 +12,12 @@ type TablePropsTypes = {
   isActions?: boolean;
   editClassName?: string;
   deleteClassName?: string;
+  classes?: string;
   editHandler?: () => void;
   deleteHandler?: () => void;
+  clickTableRow?: (
+    e: MouseEvent<HTMLTableSectionElement, globalThis.MouseEvent>
+  ) => void;
 };
 
 export const Table: FC<TablePropsTypes> = ({
@@ -24,10 +28,12 @@ export const Table: FC<TablePropsTypes> = ({
   editClassName,
   deleteClassName,
   noDataMsg,
+  classes,
   editHandler,
   deleteHandler,
+  clickTableRow,
 }): ReactElement => (
-  <table className="table">
+  <table className={`table ${classes ?? ""}`}>
     <thead className="thead">
       <tr>
         {headings.map(({ heading, classes, clickHandler }) => (
@@ -44,9 +50,16 @@ export const Table: FC<TablePropsTypes> = ({
     {!data.length ? (
       <p className="no-data">{noDataMsg}</p>
     ) : (
-      <tbody className="tbody">
+      <tbody
+        className="tbody"
+        onClick={clickTableRow ? (e) => clickTableRow(e) : undefined}
+      >
         {data?.map((item) => (
-          <tr key={item?.id} onClick={item?.handleClick && undefined}>
+          <tr
+            id={item?.id}
+            key={item?.id}
+            onClick={item?.handleClick && undefined}
+          >
             {Object.values(item[keyForIterate])?.map((cell: any) => (
               <td className={`${cell?.classes}`} key={cell?.content}>
                 {cell?.content}

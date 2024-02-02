@@ -44,3 +44,6 @@ export const NO_DATA_MSG = "no results";
 
 export const PAGE_SIZE = 10;
 export const SIBLING_COUNT = 1;
+
+export const USER = "user";
+export const TRANSACTIONS = "transactions";
