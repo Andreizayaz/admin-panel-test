@@ -27,7 +27,7 @@ import { useDrawer } from "./hooks/useDrawer";
 export const Users: FC = (): ReactElement => {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
-  const { handleClose, isClose } = useDrawer();
+  const { handleClose, handleOpen, isClose } = useDrawer();
   const { modUsers, users } = useUserList();
   const { currHeadings } = useSort();
   const { handleInput } = useSearch();
@@ -49,7 +49,7 @@ export const Users: FC = (): ReactElement => {
       await getTransactions(target.id).then((data) =>
         dispatch(setTransactions(data as transactionType[] | null))
       );
-      handleClose(false);
+      handleOpen()
       const userEmail = users.find(({ id }) => id === target.id)?.userData
         .email;
 
@@ -88,12 +88,9 @@ export const Users: FC = (): ReactElement => {
         handlePagination={(e) => handlePagination(e)}
       />
       {!isClose && (
-        <div className="overlay" onClick={() => handleClose(true)}>
+        <div className="overlay" onClick={(e) => handleClose(e)}>
           <Drawer openClasses={!isClose ? "open-drawer" : ""}>
-            <Transactions
-              email={email}
-              closeHandler={handleClose}
-            />
+            <Transactions email={email} />
           </Drawer>
         </div>
       )}
