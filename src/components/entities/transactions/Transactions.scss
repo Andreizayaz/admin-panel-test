@@ -11,6 +11,10 @@
       height: 24px;
       width: 24px;
       background-image: url("./icons/close.icon.svg");
+
+      &:hover{
+        transform: rotate(180deg);
+      }
     }
   }
 

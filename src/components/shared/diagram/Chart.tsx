@@ -8,15 +8,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  CoreChartOptions,
-  ElementChartOptions,
-  PluginChartOptions,
-  DatasetChartOptions,
-  ScaleChartOptions,
-  LineControllerChartOptions,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { _DeepPartialObject } from "chart.js/dist/types/utils";
 
 ChartJS.register(
   CategoryScale,

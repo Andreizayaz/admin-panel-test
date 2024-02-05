@@ -1,13 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import { setTransactions } from "../../transactions/store";
 
 export const useDrawer = () => {
-  const [isClose, setisClose] = useState(true);
+  const [isClose, setIsClose] = useState(true);
 
   const dispatch = useDispatch();
 
-  const handleClose = (b: boolean) => setisClose(b);
+  const handleClose = (
+    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+  ) => {
+    const isHandleClick =
+      (e.target as HTMLElement).className === "close-btn" ||
+      (e.target as HTMLElement).className === "overlay";
+    if (isHandleClick) {
+      setIsClose(true);
+    }
+  };
+
+  const handleOpen = () => setIsClose(false);
 
   useEffect(() => {
     if (isClose) {
@@ -15,5 +26,5 @@ export const useDrawer = () => {
     }
   }, [isClose]);
 
-  return { isClose, handleClose };
+  return { isClose, handleClose, handleOpen };
 };

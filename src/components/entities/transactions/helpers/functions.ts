@@ -41,39 +41,36 @@ const getDate = (date: string) => {
   return `${locDate}, ${locTime}`;
 };
 
-const getClassesForAmount = (type:string)=>{
+const getClassesForAmount = (type: string) => {
   if (type === WRITE_OFF) {
-    return 'write-off'
+    return "write-off";
   }
 
   if (type === REPLENISH) {
-    return 'replenish';
+    return "replenish";
   }
 
-  return '';
-}
+  return "";
+};
 
 export const modifyTransactionList = (transactions: transactionType[]) => {
-  return transactions
-    .filter(({ transactionData: { status } }) => status === STATUS_SUCCEDED)
-    .map(({ id, transactionData }) => {
-      return {
-        id,
-        transactionData: [
-          {
-            content:
-              transactionTr[
-                transactionData.type as keyof typeof transactionTr
-              ] ?? "",
-          },
-          {
-            content: getAmount(transactionData),
-            classes: getClassesForAmount(transactionData.type),
-          },
-          {
-            content: getDate(transactionData.created_at),
-          },
-        ] 
-      };
-    });
+  return transactions.map(({ id, transactionData }) => {
+    return {
+      id,
+      transactionData: [
+        {
+          content:
+            transactionTr[transactionData.type as keyof typeof transactionTr] ??
+            "",
+        },
+        {
+          content: getAmount(transactionData),
+          classes: getClassesForAmount(transactionData.type),
+        },
+        {
+          content: getDate(transactionData.created_at),
+        },
+      ],
+    };
+  });
 };
